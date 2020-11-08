@@ -25,3 +25,9 @@ td {
     text-align: center;
     padding: 5px;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

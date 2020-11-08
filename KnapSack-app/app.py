@@ -29,7 +29,10 @@ def index():
 
     else:
         items = Items.query.all()
-        return render_template('index.html', items = items)
+        l = [u.__dict__ for u in items]
+        print(l)
+        selectedItems = [{'weight': '12.0', 'value': '251.0', 'name': 'abc', 'id': '2'}]
+        return render_template('index.html', items = items, selectedItems = selectedItems)
 
 @app.route('/delete/<int:id>')
 def delete(id):
