@@ -8,8 +8,8 @@ db = SQLAlchemy(app)
 class Items(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(200))
-    weight = db.Column(db.Float, nullable = False)
-    value = db.Column(db.Float, nullable = False)
+    weight = db.Column(db.Integer, nullable = False)
+    value = db.Column(db.Integer, nullable = False)
 
     def __repr__(self):
         return '<Item %r' % self.id
@@ -43,7 +43,7 @@ def getouput():
         maxWeight = request.form['maxWeight']
         items = Items.query.all()
         l = [i.__dict__ for i in items]
-        ks = knapsack(l, maxWeight)
+        ks = knapsack(l, int(maxWeight))
         return render_template('output.html', items = ks, maxWeight = maxWeight)
 
 @app.route('/delete/<int:id>')

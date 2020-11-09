@@ -29,8 +29,8 @@
     <div class="form">
         <form action="/" method="POST">
             <input type="text" maxlength="200" name="name" id="content" placeholder="Name">
-            <input type="number" min="0" maxlength="5" name="weight" id="content" placeholder="Weight">
-            <input type="number" min= "0" maxlength="5" name="value" id="content" placeholder="Value">
+            <input type="number" min="0" max="1000" name="weight" id="content" placeholder="Weight" required>
+            <input type="number" min= "0" max="1000" name="value" id="content" placeholder="Value" required>
             <input type="submit" value="Add Item">
         </form>
     </div>
@@ -38,7 +38,7 @@
     <div class="center" style="padding-top: 15px;">
         <div class="form">
             <form action="/output" method="POST">
-                <input type="number" min="0" maxlength="10" name="maxWeight" id="content" placeholder="Max Weight">
+                <input type="number" min="0" name="maxWeight" id="content" placeholder="Max Weight" required>
                 <input type="submit" value="Get Items">
             </form>
         </div>
