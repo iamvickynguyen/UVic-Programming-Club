@@ -17,7 +17,7 @@ class Items(db.Model):
 # write knapsack function here
 # item attributes: name, weight, value
 # return list of item objects (ie: [{'name': 'item1', 'value': 10, 'weight': '2.5'}])
-def knapsack(items):
+def knapsack(items, maxWeight):
     return []
 
 @app.route('/', methods=['POST', 'GET'])
@@ -43,7 +43,7 @@ def getouput():
         maxWeight = request.form['maxWeight']
         items = Items.query.all()
         l = [i.__dict__ for i in items]
-        ks = knapsack(l)
+        ks = knapsack(l, maxWeight)
         return render_template('output.html', items = ks, maxWeight = maxWeight)
 
 @app.route('/delete/<int:id>')
