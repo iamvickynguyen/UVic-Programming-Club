@@ -29,40 +29,20 @@
     <div class="form">
         <form action="/" method="POST">
             <input type="text" maxlength="200" name="name" id="content" placeholder="Name">
-            <input type="text" maxlength="5" name="weight" id="content" placeholder="Weight">
-            <input type="text" maxlength="5" name="value" id="content" placeholder="Value">
+            <input type="number" maxlength="5" name="weight" id="content" placeholder="Weight">
+            <input type="number" maxlength="5" name="value" id="content" placeholder="Value">
             <input type="submit" value="Add Task">
         </form>
     </div>
 
     <div class="center" style="padding-top: 15px;">
         <div class="form">
-            <form action="/" method="POST">
-                <input type="text" maxlength="10" name="maxWeight" id="content" placeholder="Max Weight">
+            <form action="/output" method="POST">
+                <input type="number" min="0" maxlength="10" name="maxWeight" id="content" placeholder="Max Weight">
                 <input type="submit" value="Get Items">
             </form>
         </div>
     </div>
-</div>
-
-<div class="content" style="padding-top: 50px;">
-    <hr>
-    <h3 style="text-align: center;">Output</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Weight</th>
-            <th>Value</th>
-        </tr>
-
-        {% for item in selectedItems %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.weight }}</td>
-            <td>{{ item.value }}</td>
-        </tr>
-        {% endfor %}
-    </table>
 </div>
 
 {% endblock %}

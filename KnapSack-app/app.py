@@ -14,10 +14,16 @@ class Items(db.Model):
     def __repr__(self):
         return '<Item %r' % self.id
 
+# write knapsack function here
+# item attributes: name, weight, value
+# return list of item objects (ie: [{'name': 'item1', 'value': 10, 'weight': '2.5'}])
+def knapsack(items):
+    return []
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        item_name, item_weight, item_value = request.form['name'], request.form['weight'], request.form['value']
+        item_name, item_weight, item_value= request.form['name'], request.form['weight'], request.form['value']
         new_item = Items(name = item_name, weight = item_weight, value = item_value)
 
         try:
@@ -29,10 +35,16 @@ def index():
 
     else:
         items = Items.query.all()
-        l = [u.__dict__ for u in items]
-        print(l)
-        selectedItems = [{'weight': '12.0', 'value': '251.0', 'name': 'abc', 'id': '2'}]
-        return render_template('index.html', items = items, selectedItems = selectedItems)
+        return render_template('index.html', items = items)
+
+@app.route('/output', methods=['POST', 'GET'])
+def getouput():
+    if request.method == 'POST':
+        maxWeight = request.form['maxWeight']
+        items = Items.query.all()
+        l = [i.__dict__ for i in items]
+        ks = knapsack(l)
+        return render_template('output.html', items = ks, maxWeight = maxWeight)
 
 @app.route('/delete/<int:id>')
 def delete(id):
