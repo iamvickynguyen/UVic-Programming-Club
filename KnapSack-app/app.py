@@ -15,8 +15,8 @@ class Items(db.Model):
         return '<Item %r' % self.id
 
 # write knapsack function here
-# item attributes: name, weight, value
-# return list of item objects (ie: [{'name': 'item1', 'value': 10, 'weight': '2.5'}])
+# item attributes: name, weight, value (you may want to cast values of weight and value to int)
+# return list of items
 def knapsack(items, maxWeight):
     return []
 
